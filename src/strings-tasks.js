@@ -295,8 +295,17 @@ function reverseString(str) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
+function orderAlphabetically(str) {
+  let newStr = '';
+  const arr = [];
+  for (let i = 0; i < str.length; i += 1) {
+    arr[i] = str[i];
+  }
+  arr.sort();
+  for (let j = 0; j < arr.length; j += 1) {
+    newStr += arr[j];
+  }
+  return newStr;
 }
 
 /**
@@ -311,8 +320,8 @@ function orderAlphabetically(/* str */) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(str, substring) {
+  return str.includes(substring);
 }
 
 /**
@@ -329,8 +338,16 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  let vowelsNumber = 0;
+  const vowels = ['a', 'e', 'i', 'o', 'u', 'y'];
+  // eslint-disable-next-line no-restricted-syntax
+  for (const char of str.toLowerCase()) {
+    if (vowels.includes(char)) {
+      vowelsNumber += 1;
+    }
+  }
+  return vowelsNumber;
 }
 
 /**
@@ -346,8 +363,18 @@ function countVowels(/* str */) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  function isLetter(element) {
+    return (
+      element !== ' ' && element !== ',' && element !== '!' && element !== '?'
+    );
+  }
+
+  const arr = str.split('').reverse();
+  const newStr = arr.filter(isLetter).join('');
+  // eslint-disable-next-line no-param-reassign
+  str = str.split('').filter(isLetter).join('');
+  return str.toLowerCase() === newStr.toLowerCase();
 }
 
 /**
@@ -362,8 +389,13 @@ function isPalindrome(/* str */) {
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
+function findLongestWord(sentence) {
+  const arr = sentence.split(' ');
+  // eslint-disable-next-line func-names
+  const newArr = arr.sort(function (a, b) {
+    return b.length - a.length;
+  });
+  return newArr[0];
 }
 
 /**
@@ -376,8 +408,11 @@ function findLongestWord(/* sentence */) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(/* str */) {
-  throw new Error('Not implemented');
+function reverseWords(str) {
+  // eslint-disable-next-line no-param-reassign
+  str = str.split('').reverse().join('');
+  const arr = str.split(' ');
+  return arr.reverse().join(' ');
 }
 
 /**
@@ -391,8 +426,14 @@ function reverseWords(/* str */) {
  *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
+function invertCase(str) {
+  let newStr = '';
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] === str[i].toLowerCase()) {
+      newStr += str[i].toUpperCase();
+    } else newStr += str[i].toLowerCase();
+  }
+  return newStr;
 }
 
 /**
